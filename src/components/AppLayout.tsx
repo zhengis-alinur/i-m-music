@@ -26,7 +26,7 @@ const AppLayout = () => {
         {...easeOutAppearance}
         className="h-10/12 w-11/12 bg-blue-500/50 pixel-border flex gap-2 text-black p-3 overflow-hidden"
       >
-        <div className="flex flex-col items-center border-r-4 border-black/20 gap-6 pt-3">
+        <div className="flex flex-col items-center border-r-4 min-w-28 border-black/20 gap-6 pt-3">
           <NavBar />
         </div>
         <AnimatePresence>

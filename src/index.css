@@ -7,7 +7,14 @@
 
 @font-face {
   font-family: Minecraft;
-  src: url("/fonts/Minecraft.ttf");
+  font-weight: normal;
+  src: url("/fonts/MinecraftRegular.otf");
+}
+
+@font-face {
+  font-family: Minecraft;
+  font-weight: bold;
+  src: url("/fonts/MinecraftBold.otf");
 }
 
 * {

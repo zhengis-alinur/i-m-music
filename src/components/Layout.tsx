@@ -19,7 +19,7 @@ function Layout() {
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname.split("/")[1]}
-          className="w-full h-full flex flex-col items-center justify-center text-gray-800"
+          className="w-full h-full flex flex-col items-center justify-center text-gray-800 text-lg"
           initial={{ x: -10000, opacity: 1 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}

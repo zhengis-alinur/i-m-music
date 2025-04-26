@@ -8,7 +8,7 @@ import AlbumCard from "../components/AlbumCard";
 import { getSongsByArtist } from "../api/songs";
 import SongCard from "../components/SongCard";
 
-const MAX_DESCRIPTION_LENGTH = 1000; // characters before "read more"
+const MAX_DESCRIPTION_LENGTH = 800; // characters before "read more"
 
 const ArtistPage = () => {
   const { id } = useParams();
