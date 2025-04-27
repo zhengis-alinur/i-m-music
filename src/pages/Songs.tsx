@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Song } from "../types";
 import { getSongs } from "../api/songs";
-import SongCard from "../components/SongCard";
+import Loader from "../components/Loader";
+import SongsWrapper from "../components/SongsWrapper";
 
 const Songs = () => {
   const [data, setData] = useState<Song[]>();
@@ -19,14 +20,17 @@ const Songs = () => {
     fetchSongs();
   }, []);
 
+  if (!data)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+
   return (
     <>
       <h1 className="font-bold text-3xl mb-4">Songs</h1>
-      <div className="flex flex-col md:grid grid-cols-5 gap-3">
-        {data?.map((song) => (
-          <SongCard key={song._id} song={song} />
-        ))}
-      </div>
+      <SongsWrapper songs={data} />
     </>
   );
 };

@@ -10,6 +10,7 @@ import Songs from "./pages/Songs";
 import Album from "./pages/Album";
 import Artist from "./pages/Artist";
 import Song from "./pages/Song";
+import Search from "./pages/Search";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTE.song,
             element: <Song />,
+          },
+          {
+            path: ROUTE.search,
+            element: <Search />,
           },
         ],
       },

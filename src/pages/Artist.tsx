@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { getArtistById } from "../api/artists";
 import Button from "../components/Button";
 import { getAlbumsByArtist } from "../api/albums";
-import AlbumCard from "../components/AlbumCard";
 import { getSongsByArtist } from "../api/songs";
-import SongCard from "../components/SongCard";
+import Loader from "../components/Loader";
+import AlbumsWrapper from "../components/AlbumsWrapper";
+import SongsWrapper from "../components/SongsWrapper";
 
 const MAX_DESCRIPTION_LENGTH = 800; // characters before "read more"
 
@@ -62,6 +63,13 @@ const ArtistPage = () => {
     );
   };
 
+  if (!artist || !albums || !songs)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex flex-wrap gap-2">
@@ -113,19 +121,11 @@ const ArtistPage = () => {
       </div>
       <div>
         <h2 className="text-3xl mb-2">Albums</h2>
-        <div className="flex justify-around md:justify-start flex-wrap gap-3">
-          {albums?.map((album) => (
-            <AlbumCard key={album._id} album={album} />
-          ))}
-        </div>
+        <AlbumsWrapper albums={albums} />
       </div>
       <div>
         <h2 className="text-3xl mb-2">Songs</h2>
-        <div className="flex flex-wrap gap-3">
-          {songs?.map((song) => (
-            <SongCard key={song._id} song={song} />
-          ))}
-        </div>
+        <SongsWrapper songs={songs} />
       </div>
     </div>
   );

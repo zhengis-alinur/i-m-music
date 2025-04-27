@@ -7,6 +7,7 @@ import { useState } from "react";
 import { easeOutAppearance } from "../animations";
 import Button from "./Button";
 import MobileNavBar from "./MobileNavBar";
+import SearchBar from "./SearchBar";
 
 const AppLayout = () => {
   const [isLyricsOpen] = useState(false);
@@ -15,18 +16,17 @@ const AppLayout = () => {
 
   return (
     <>
-      <div className="w-11/12 flex items-center justify-between mb-3 sm:mb-0">
-        <div className="flex">
+      <div className="w-11/12 flex items-center justify-center sm:justify-between mb-5 sm:mb-0">
+        <div className="hidden sm:flex">
           <Button onClick={() => navigate(-1)}>◄</Button>
           <Button onClick={() => navigate(1)}>►</Button>
-          <div className="block sm:hidden">
-            <Logo width={400} />
-          </div>
         </div>
         <div className="hidden sm:block">
           <Logo width={400} />
         </div>
-        <div />
+        <div className="flex justify-center">
+          <SearchBar />
+        </div>
       </div>
       <div
         {...easeOutAppearance}
@@ -50,14 +50,11 @@ const AppLayout = () => {
           )}
         </AnimatePresence>
         <div className="flex-1 p-2 overflow-y-scroll overflow-x-hidden">
-          {/* <div className="w-full flex justify-center pb-4">
-          <input className="w-96 pixel-border" />
-        </div> */}
-          <div>
+          <div className="h-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={pathname.split("/")[3] || pathname.split("/")[2]}
-                className="w-full h-full "
+                className="w-full h-full"
                 initial={{ x: -10000, opacity: 1 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}

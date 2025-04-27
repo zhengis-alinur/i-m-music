@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getSongById, SongByIdResponse } from "../api/songs";
 import { annotateStreamLine } from "../api/annotate";
 import LyricLine from "../components/LyricLine";
+import Loader from "../components/Loader";
 
 const SongPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -54,6 +55,13 @@ const SongPage = () => {
     },
     [artistName, title, annotations]
   );
+
+  if (!data)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
 
   return (
     <div className="flex flex-col gap-4 p-4">

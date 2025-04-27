@@ -1,7 +1,7 @@
 import { api } from ".";
 import { Artist, Album, Song } from "../types";
 
-export const searchEverything = async (
+export const search = async (
   query: string
 ): Promise<{
   artists: Artist[];

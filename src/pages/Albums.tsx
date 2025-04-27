@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Album } from "../types";
-import AlbumCard from "../components/AlbumCard";
 import { getAlbums } from "../api/albums";
+import Loader from "../components/Loader";
+import AlbumsWrapper from "../components/AlbumsWrapper";
 
 const Albums = () => {
   const [data, setData] = useState<Album[]>();
@@ -18,14 +19,18 @@ const Albums = () => {
 
     fetchAlbums();
   }, []);
+
+  if (!data)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+
   return (
     <>
-      <h1 className="font-bold text-2xl mb-4">Top Albums</h1>
-      <div className="flex justify-around md:justify-start flex-wrap gap-3">
-        {data?.map((album) => (
-          <AlbumCard key={album._id} album={album} />
-        ))}
-      </div>
+      <h1 className="font-bold text-2xl mb-4">Albums</h1>
+      <AlbumsWrapper albums={data} />
     </>
   );
 };

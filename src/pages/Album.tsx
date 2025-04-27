@@ -3,6 +3,7 @@ import { getAlbumById, GetAlbumByIdResponse } from "../api/albums";
 import { useState, useEffect } from "react";
 import SongCard from "../components/SongCard";
 import { useImageWithFallback } from "../hooks/useImageWithFallback";
+import Loader from "../components/Loader";
 
 const AlbumPage = () => {
   const { id } = useParams();
@@ -24,6 +25,13 @@ const AlbumPage = () => {
 
   const { name, image_url, songs } = data || {};
   const imageUrl = useImageWithFallback(image_url);
+
+  if (!data)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
 
   return (
     <div className="flex flex-col items-center gap-4 p-4">

@@ -30,9 +30,13 @@ const AudioPlayer = () => {
   };
 
   return (
-    <div className="absolute top-4 right-4">
+    <div className="absolute sm:top-4 sm:right-4 top-2 right-2 ">
       <button className="cursor-pointer" onClick={togglePlayback}>
-        <img src={soundIcon} alt="Toggle Sound" width={30} />
+        <img
+          className="w-[20px] sm:w-[30px]"
+          src={soundIcon}
+          alt="Toggle Sound"
+        />
       </button>
       <audio ref={audioRef} src="/background.mp3" loop muted />
     </div>

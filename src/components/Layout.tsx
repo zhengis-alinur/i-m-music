@@ -10,8 +10,7 @@ function Layout() {
     <>
       <a href="http://nfactorial.school" target="__blank" rel="noreferrer">
         <img
-          className="absolute bg-white left-0 top-0 p-1"
-          width={50}
+          className="absolute w-[40px] sm:w-[50px] bg-white left-0 top-0 p-1"
           src="/logo/n.png"
         />
       </a>

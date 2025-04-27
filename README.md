@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# i-am-music
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**i-am-music** is a web application that allows users to provide annotations and interpretations of song lyrics, as well as explore information about albums, songs, and artists. The project leverages AI capabilities to analyze lyrics and generate detailed line-by-line annotations, helping users dive deeper into the hidden meanings behind the songs.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Backend**: Nest.js
+- **Database**: MongoDB
+- **Frontend**: React.js
+- **Lyrics/API Sources**: Genius API
+- **AI for annotations**: OpenAI API
+- **Deployment**: Vercel (frontend), Railway.com(backend)
 
-## Expanding the ESLint configuration
+## Installation and Launch Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Clone the repository:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/yourusername/i-am-music.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Set up the Frontend (React.js):
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Navigate to the frontend folder:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- Install dependencies:
+
+```bash
+npm install
 ```
+
+- Start the frontend:
+
+```bash
+npm run dev
+```
+
+Your application will now be available at `http://localhost:5173`.
+
+## Design and Development Process
+
+During the planning phase, I spent significant time choosing the best data sources for song information and lyrics.  
+Ultimately, I decided to use two sources:
+
+1. **Genius API** — One of the most popular databases for lyrics and artist information.
+2. A second lyrics source, to complement the data.
+
+I wrote a Python script to scrape and gather the data, then uploaded it into MongoDB.  
+I chose this approach to ensure faster data access and avoid relying on external APIs during runtime, considering this is a pet project.
+
+## Unique Approaches and Methodologies
+
+- **MongoDB storage**: Storing all lyrics and metadata in MongoDB provides flexibility and speeds up API responses.
+- **OpenAI API integration**: Instead of manually writing annotations, I integrated OpenAI's API to automatically generate high-quality line-by-line interpretations.
+- **Separated Backend and Frontend**: Keeping them in separate repositories allowed for better scalability, modularity, and easier deployments.
+
+## Trade-offs Made During Development
+
+- **Storing data in own database**: Instead of dynamically fetching from APIs at runtime, I chose to pre-load lyrics into the database for speed and simplicity, accepting that the database might get outdated over time.
+- **Using OpenAI for interpretations**: While creating a custom NLP model could provide more control, OpenAI’s API offered a faster and more efficient solution for generating meaningful annotations within the limited time.
+
+## Known Issues and Problems
+
+- Sometimes AI-generated annotations might be too generic or slightly off-topic depending on the input.
+- Under high load, some synchronization issues between the backend and frontend might occur since caching has not been fully implemented yet.
+
+## Why This Tech Stack?
+
+- **Nest.js**: Chosen for its structure, scalability, and powerful TypeScript support, ideal for building a robust backend API.
+- **MongoDB**: Flexible, easy to scale, and a great fit for storing varying song/artist data structures.
+- **React.js**: Allows building interactive, dynamic user interfaces quickly with efficient state management.
+- **OpenAI API**: Provides high-quality NLP capabilities out of the box, enabling fast development of the lyric annotation feature without needing to build custom models.
+
+## Video Demo
+
+[Link to video demo](https://your-video-link.com)

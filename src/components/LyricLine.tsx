@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
-import loading from "../assets/loading.gif";
+import Loader from "./Loader";
 
 interface LyricLineProps {
   line: string;
@@ -59,7 +59,7 @@ const LyricLine: React.FC<LyricLineProps> = ({
                 </Button>
                 <h3 className="text-2xl mb-2">AI Annotation</h3>
                 {annotation === "" ? (
-                  <img src={loading} />
+                  <Loader />
                 ) : (
                   <div className="max-h-[500px] overflow-y-scroll p-3">
                     <p className="text-gray-700">{annotation}</p>
