@@ -6,6 +6,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { easeOutAppearance } from "../animations";
 import Button from "./Button";
+import MobileNavBar from "./MobileNavBar";
 
 const AppLayout = () => {
   const [isLyricsOpen] = useState(false);
@@ -14,19 +15,24 @@ const AppLayout = () => {
 
   return (
     <>
-      <div className="w-11/12 flex items-center justify-between">
-        <div>
+      <div className="w-11/12 flex items-center justify-between mb-3 sm:mb-0">
+        <div className="flex">
           <Button onClick={() => navigate(-1)}>◄</Button>
           <Button onClick={() => navigate(1)}>►</Button>
+          <div className="block sm:hidden">
+            <Logo width={400} />
+          </div>
         </div>
-        <Logo width={400} />
+        <div className="hidden sm:block">
+          <Logo width={400} />
+        </div>
         <div />
       </div>
       <div
         {...easeOutAppearance}
         className="h-10/12 w-11/12 bg-blue-500/50 pixel-border flex gap-2 text-black p-3 overflow-hidden"
       >
-        <div className="flex flex-col items-center border-r-4 min-w-28 border-black/20 gap-6 pt-3">
+        <div className="hidden sm:flex flex-col items-center border-r-4 min-w-28 border-black/20 gap-6 pt-3">
           <NavBar />
         </div>
         <AnimatePresence>
@@ -62,6 +68,7 @@ const AppLayout = () => {
           </div>
         </div>
       </div>
+      <MobileNavBar />
     </>
   );
 };

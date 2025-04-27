@@ -6,7 +6,7 @@ const ArtistCard = ({ artist }: { artist: Artist }) => {
   return (
     <Link
       to={`${URLs.artist}/${artist._id}`}
-      className="flex flex-col gap-2 items-center justify-center w-48 hover:text-amber-500 transition-all cursor-pointer"
+      className="flex flex-col gap-2 items-center justify-center w-24 sm:w-48 hover:text-amber-500 transition-all cursor-pointer"
       key={artist._id}
     >
       <img

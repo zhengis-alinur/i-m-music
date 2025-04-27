@@ -30,13 +30,13 @@ const Home = () => {
         ))}
       </div>
       <h1 className="font-bold text-3xl">Top Artists</h1>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex justify-around md:justify-start flex-wrap gap-3">
         {data?.artists.map((artist) => (
           <ArtistCard key={artist._id} artist={artist} />
         ))}
       </div>
       <h1 className="font-bold text-3xl">Top Albums</h1>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex justify-around md:justify-start flex-wrap gap-3">
         {data?.albums.map((album) => (
           <AlbumCard key={album._id} album={album} />
         ))}

@@ -85,7 +85,7 @@ const ArtistPage = () => {
       </div>
       <div>
         <h2 className="text-3xl">Social media</h2>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <a
             href={`https://www.instagram.com/${socials?.instagram}`}
             target="__blank"
@@ -113,7 +113,7 @@ const ArtistPage = () => {
       </div>
       <div>
         <h2 className="text-3xl mb-2">Albums</h2>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex justify-around md:justify-start flex-wrap gap-3">
           {albums?.map((album) => (
             <AlbumCard key={album._id} album={album} />
           ))}

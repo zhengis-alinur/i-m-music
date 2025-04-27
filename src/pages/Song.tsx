@@ -57,10 +57,10 @@ const SongPage = () => {
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <div className="flex flex-col md:flex-row items-start gap-4">
+      <div className="flex flex-col md:flex-row md:items-start gap-4">
         {header_image_url && (
           <img
-            className="max-h-[200px] w-auto"
+            className="h-[200px] w-auto"
             src={header_image_url}
             alt={title}
           />

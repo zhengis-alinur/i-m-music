@@ -21,7 +21,7 @@ const Albums = () => {
   return (
     <>
       <h1 className="font-bold text-2xl mb-4">Top Albums</h1>
-      <div className="flex flex-wrap justify-between gap-3">
+      <div className="flex justify-around md:justify-start flex-wrap gap-3">
         {data?.map((album) => (
           <AlbumCard key={album._id} album={album} />
         ))}

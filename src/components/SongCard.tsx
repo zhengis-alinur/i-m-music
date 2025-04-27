@@ -6,7 +6,7 @@ const SongCard = ({ song }: { song: Song }) => {
   return (
     <Link
       to={`${URLs.song}/${song._id}`}
-      className="relative flex flex-col items-center justify-center w-64 h-16 bg-cover bg-center group cursor-pointer hover:outline-3 outline-amber-500"
+      className="relative flex flex-col items-center justify-center w-full h-12 md:w-56 md:h-16 bg-cover bg-center group cursor-pointer hover:outline-3 outline-amber-500"
       style={{ backgroundImage: `url(${song.header_image_url})` }}
       key={song._id}
     >

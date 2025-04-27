@@ -21,7 +21,7 @@ const Artists = () => {
   return (
     <div>
       <h1 className="font-bold text-3xl mb-4">Artists</h1>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex justify-around md:justify-start flex-wrap gap-2 md:gap-4">
         {data?.map((artist) => (
           <ArtistCard key={artist._id} artist={artist} />
         ))}
