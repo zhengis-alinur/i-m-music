@@ -47,7 +47,7 @@ const LyricLine: React.FC<LyricLineProps> = ({
               transition={{ duration: 0.3 }}
             >
               <div
-                className="relative flex flex-col gap-4 items-center bg-white p-6 shadow-lg max-w-lg w-full"
+                className="relative flex flex-col gap-2 items-center bg-white p-6 shadow-lg max-w-lg w-full"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Button
@@ -57,12 +57,15 @@ const LyricLine: React.FC<LyricLineProps> = ({
                 >
                   ✖
                 </Button>
-                <h3 className="text-2xl mb-2">AI Annotation</h3>
+                <h3 className="text-2xl">AI Annotation</h3>
                 {annotation === "" ? (
                   <Loader />
                 ) : (
-                  <div className="max-h-[500px] overflow-y-scroll p-3">
-                    <p className="text-gray-700">{annotation}</p>
+                  <div className="text-gray-700 p-3 flex flex-col gap-4">
+                    <p className="text-black font-bold"> {line}</p>
+                    <div className="max-h-[400px] overflow-y-scroll">
+                      <p>{annotation}</p>
+                    </div>
                   </div>
                 )}
                 <Button
