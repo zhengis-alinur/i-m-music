@@ -15,7 +15,8 @@ export const annotateStreamLine = async (
   input: AnnotateDto,
   callback: (chunk: string) => void
 ) => {
-  const response = await fetch("http://localhost:3000/annotate/stream", {
+  const baseURL = import.meta.env.VITE_BACKEND_URL;
+  const response = await fetch(`${baseURL}/annotate/stream`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(input),
