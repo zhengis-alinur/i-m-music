@@ -65,20 +65,20 @@ const SongPage = () => {
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <div className="flex flex-col md:flex-row md:items-start gap-4">
-        {header_image_url && (
-          <img
-            className="h-[200px] w-auto"
-            src={header_image_url}
-            alt={title}
-          />
-        )}
-        <div>
+      <div className="w-full">
+        <img
+          className="max-h-[200px] float-left mr-5 mb-5"
+          width={200}
+          height={200}
+          src={header_image_url}
+          alt={title}
+        />
+        <div className="w-full">
           <h1 className="text-amber-500 text-4xl">{title}</h1>
-          <p className="mt-2">{description}</p>
+          <div className="flex "></div>
+          <p>{description}</p>
         </div>
       </div>
-
       <div>
         <h2 className="text-3xl mt-6 mb-4">Lyrics</h2>
         <div className="flex flex-col items-center">
